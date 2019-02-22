@@ -1,0 +1,27 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+entity bl is
+  Port (
+  I0 : in std_logic;
+  I1 : in std_logic;
+  s : in std_logic;
+  z : out std_logic;
+  opt : in std_logic );
+end bl;
+
+architecture Behavioral of bl is
+
+begin
+ process(opt,I0,s,I1)
+  variable tem,b:std_logic;
+  begin
+   if(opt= '0') then
+    tem := ((I0 and (not s)) or (I1 and s));
+   else
+     b := not s;
+    tem := ((I0 and (not b)) or (I1 and b));
+   end if;
+   z<= tem;
+  end process;
+     
+end Behavioral;

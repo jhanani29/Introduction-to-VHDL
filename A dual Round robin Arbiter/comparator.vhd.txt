@@ -1,0 +1,18 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
+entity comparator is
+  Port ( a : in std_logic;
+         b : in std_logic;
+         p  : in std_logic;
+         q : in std_logic;
+         op : out std_logic );
+end comparator;
+
+architecture Behavioral of comparator is
+signal s1,s2,s3 : std_logic_vector(1 downto 0);
+begin
+ s1 <= p & a ;
+ s2 <= q & b;
+ op <= '1' when s1 >= s2 else '0' when s1<s2;
+end Behavioral;
